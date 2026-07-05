@@ -192,6 +192,20 @@
             border-radius: 1px;
         }
 
+        /* top match special label */
+        .section-label.top-match .dot {
+            background: #f0c45a;
+            box-shadow: 0 0 16px rgba(240, 196, 90, 0.7);
+            width: 10px;
+            height: 10px;
+        }
+
+        .section-label.top-match span {
+            color: #f0d87c;
+            letter-spacing: 3px;
+            font-size: 12px;
+        }
+
         /* ============ MATCH CARD ============ */
         .card {
             background: linear-gradient(160deg, #141414 0%, #0f0f0f 40%, #111 100%);
@@ -235,7 +249,6 @@
             transition: transform 0.15s ease;
         }
 
-        /* subtle gold shimmer on card edge */
         .card::after {
             content: '';
             position: absolute;
@@ -316,7 +329,25 @@
             transition: border-color 0.3s ease, box-shadow 0.3s ease;
         }
 
-        .card:hover .team img {
+        /* flag circle (no image) */
+        .flag-circle {
+            width: 34px;
+            height: 34px;
+            border-radius: 50%;
+            background: #1a1a1a;
+            border: 1.5px solid rgba(212, 168, 67, 0.5);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            flex-shrink: 0;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+            transition: border-color 0.3s ease, box-shadow 0.3s ease;
+            line-height: 1;
+        }
+
+        .card:hover .team img,
+        .card:hover .flag-circle {
             border-color: rgba(212, 168, 67, 0.8);
             box-shadow: 0 0 16px rgba(212, 168, 67, 0.2), 0 0 0 2px rgba(212, 168, 67, 0.08);
         }
@@ -359,11 +390,6 @@
             border-color: rgba(212, 168, 67, 0.3);
             color: #ddd;
             box-shadow: 0 0 12px rgba(212, 168, 67, 0.08);
-        }
-
-        /* VS divider for mobile clarity */
-        .vs-divider {
-            display: none;
         }
 
         /* Pick badge */
@@ -479,9 +505,14 @@
                 gap: 5px;
             }
 
-            .team img {
+            .team img,
+            .flag-circle {
                 width: 28px;
                 height: 28px;
+            }
+
+            .flag-circle {
+                font-size: 18px;
             }
 
             .team span {
@@ -514,6 +545,10 @@
                 font-size: 10px;
                 letter-spacing: 2px;
             }
+
+            .section-label.top-match span {
+                font-size: 11px;
+            }
         }
 
         @media (max-width: 360px) {
@@ -521,9 +556,13 @@
                 font-size: 10px;
                 max-width: 60px;
             }
-            .team img {
+            .team img,
+            .flag-circle {
                 width: 24px;
                 height: 24px;
+            }
+            .flag-circle {
+                font-size: 16px;
             }
             .time-badge {
                 font-size: 9.5px;
@@ -540,7 +579,7 @@
             }
         }
 
-        /* ============ SCROLLBAR STYLING ============ */
+        /* ============ SCROLLBAR ============ */
         ::-webkit-scrollbar {
             width: 5px;
         }
@@ -555,7 +594,6 @@
             background: #3a3a3a;
         }
 
-        /* ============ SELECTION ============ */
         ::selection {
             background: rgba(212, 168, 67, 0.3);
             color: #fff;
@@ -590,7 +628,33 @@
     <!-- ============ MAIN CONTENT ============ -->
     <main class="container">
 
-        <!-- Section Label -->
+        <!-- ===== TOP MATCH SECTION ===== -->
+        <div class="section-label top-match">
+            <div class="dot"></div>
+            <span>⭐ Top Match</span>
+            <div class="line"></div>
+        </div>
+
+        <!-- World Cup 2026: Brazil vs Norway -->
+        <article class="card">
+            <div class="league">🌍 World Cup 2026</div>
+            <div class="match">
+                <div class="team home">
+                    <div class="flag-circle">🇧🇷</div>
+                    <span>Brazil</span>
+                </div>
+                <div class="time-badge">04:00</div>
+                <div class="team away">
+                    <span>Norway</span>
+                    <div class="flag-circle">🇳🇴</div>
+                </div>
+            </div>
+            <div class="pick">
+                <span class="pick-icon">🔥</span> Pick Over 1.5
+            </div>
+        </article>
+
+        <!-- ===== TODAY MATCH SECTION ===== -->
         <div class="section-label">
             <div class="dot"></div>
             <span>Today Match</span>
